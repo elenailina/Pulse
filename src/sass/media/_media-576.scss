@@ -1,0 +1,90 @@
+@media (max-width: 575px) {
+    .header {
+        display: flex;
+        flex-direction: column;
+        &__logo {
+        margin-top: 10px;
+            width: 160px;
+            img{
+                width: 100%;
+            }
+        }
+        &__official {
+            margin-top: 15px;
+            font-size: 13px;
+            span{
+                font-size: 14px;
+            }
+        }
+        &__contacts {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            font-size: 10px;
+        }
+        &__phone {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    }
+    .button {
+        &_big {
+            margin-top: 40px;
+            width: 224px;
+            height: 34px;
+            font-size: 11px;
+        }
+    }
+    .promo {
+        padding: 14px 25px 20px 25px;
+        &__wrapper {
+            margin-top: 35px;
+            display: flex;
+            align-items: center;
+        }
+        &__header {
+            font-size: 22px;
+        }
+        &__subheader {
+            font-size: 12px;
+        }
+        &__items {
+            width: 264px;
+        }
+        &__item {
+            font-size: 9px;
+            img {
+                width: 24px;
+            }
+        }
+        &__link {
+            font-size: 10px;
+        }
+    }
+    .title {
+        font-size: 20px;
+    }
+    .advantages {
+        padding: 40px 0 60px 0;
+        &__item {
+            margin-top: 33px;
+            padding-right: 13px;
+            padding-left: 13px;
+            img {
+                width: 50px;
+            }
+        }
+        &__header {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        &__descr {
+            margin-top: 17px;
+            font-size: 11px;
+            a {
+                font-size: 11px;
+            }
+        }
+
+    }
+}

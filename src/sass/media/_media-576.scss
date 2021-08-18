@@ -64,6 +64,10 @@
     }
     .title {
         font-size: 20px;
+        &_white {
+            font-size: 19px;
+            text-align: center;
+        }
     }
     .advantages {
         padding: 40px 0 60px 0;
@@ -87,5 +91,18 @@
             }
         }
 
+    }
+    .consultation{
+        min-height: 471px;
+        padding: 62px 0 66px 10px;
+        &__descr {
+            font-size: 14px;
+            text-align: center;
+        }
+    }
+    .feed-form {
+        display: flex;
+        align-items: center;
+        margin-top: 33px;
     }
 }

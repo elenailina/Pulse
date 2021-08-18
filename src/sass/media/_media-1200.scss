@@ -35,4 +35,22 @@
             font-size: 13px;
         }
     }
+    .consultation{
+        min-height: 606px;
+        padding: 90px 0 84px 50px;
+        &__descr {
+            font-size: 18px;
+        }
+    }
+    .feed-form {
+        input {
+            width: 270px;
+            height: 45px;
+        }
+    }
+    .button_submit {
+        width: 270px;
+        height: 50px;
+        font-size: 15px
+    }
 }

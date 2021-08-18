@@ -30,6 +30,11 @@
             height: 44px;
             font-size: 15px;
         }
+        &_submit {
+            width: 252px;
+            height: 48px;
+            font-size: 14px;
+        }
     }
     .promo {
         min-height: 575px;
@@ -76,5 +81,18 @@
             margin-top: 20px;
         }
 
+    }
+    .consultation{
+        min-height: 534px;
+        &__descr {
+            font-size: 17px;
+        }
+    }
+    .feed-form {
+        input {
+            width: 252px;
+            height: 43px;
+            font-size: 13px;
+        }
     }
 }

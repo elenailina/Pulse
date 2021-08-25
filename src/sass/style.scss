@@ -3,6 +3,7 @@
     font-family: 'Museo Sans', sans-serif;
 }
 .container{
+    position: relative;
     max-width: 950px;
     margin: 0 auto;
 }
@@ -14,7 +15,3 @@
 @import 'blocks/consultation';
 @import 'blocks/forms';
 @import 'blocks/carousel';
-@import 'media/media-1200';
-@import 'media/media-992';
-@import 'media/media-768';
-@import 'media/media-576'

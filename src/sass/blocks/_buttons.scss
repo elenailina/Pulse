@@ -20,3 +20,60 @@
         font-size: 16px;
     }
 }
+
+@media (max-width: 1200px){
+    .button_submit {
+        width: 270px;
+        height: 50px;
+        font-size: 15px
+    }
+}
+
+@media (max-width: 991px) {
+    .button {
+        width: 145px;
+        height: 29px;
+        font-size: 11px;
+        &_big {
+            margin-top: 60px;
+            width: 285px;
+            height: 44px;
+            font-size: 15px;
+        }
+        &_submit {
+            width: 252px;
+            height: 48px;
+            font-size: 14px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .button {
+        width: 135px;
+        height: 27px;
+        font-size: 10px;
+        &_big {
+            margin-top: 45px;
+            width: 255px;
+            height: 39px;
+            font-size: 13px;
+        }
+        &_submit {
+            width: 190px;
+            height: 40px;
+            font-size: 13px;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .button {
+        &_big {
+            margin-top: 40px;
+            width: 224px;
+            height: 34px;
+            font-size: 11px;
+        }
+    }
+}

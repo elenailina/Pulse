@@ -19,3 +19,40 @@
         }    
     }
 }
+
+@media (max-width: 1200px){
+    .feed-form {
+        input {
+            width: 270px;
+            height: 45px;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .feed-form {
+        input {
+            width: 252px;
+            height: 43px;
+            font-size: 13px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .feed-form {
+        input {
+            width: 190px;
+            height: 35px;
+            font-size: 11px
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .feed-form {
+        display: flex;
+        align-items: center;
+        margin-top: 33px;
+    }
+}

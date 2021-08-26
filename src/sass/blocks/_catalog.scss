@@ -38,9 +38,12 @@
     }
     &__content {
         margin-top: 60px;
-        display: flex;
+        display: none;
         justify-content: space-between;
         flex-wrap: wrap;
+        &_active {
+            display: flex;
+        }
     }
     &-item {
         width: 300px;
@@ -153,7 +156,7 @@
             position: absolute;
             bottom: 0;
             left: 50%;
-            transform: translateX(calc(-50% -19px));
+            transform: translateX(calc(-50% - 19px));
             display: block;
             font-size: 14px;
             font-weight: 500;
@@ -163,6 +166,108 @@
             &:hover {
                 color: $main-color;
             }
+        }
+    }
+}
+@media (max-width: 1200px) {
+    .catalog{
+        &__tabs {
+            margin-top: 63px;
+        }
+        &__tab {
+            width: 200px;
+            height: 45px;
+            font-size: 16px;
+            line-height: 43px;
+        }
+        &__content {
+            justify-content: space-around;
+        }
+        &-item {
+            width: 275px;
+            &__descr {
+                font-size: 13px;
+            }
+            &__price {
+                font-size: 19px;
+            }
+            &__list {
+                li {
+                    font-size: 13px;
+                    margin-bottom: 17px;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 991px) {
+    .catalog {
+        padding-bottom: 80px;
+        &__tab {
+            width: 180px;
+            height: 38px;
+            font-size: 14px;
+            line-height: 36px;
+        }
+        &__content {
+            justify-content: space-evenly;
+        }
+        &-item {
+            &__old-price {
+                font-size: 13px;
+            }
+            &__price {
+                font-size: 17px;
+            }
+        }
+    }
+}
+@media (max-width: 767px) {
+    .catalog {
+        &__tab {
+            width: 150px;
+            height: 30px;
+            font-size: 13px;
+            line-height: 28px;
+        }
+        &-item {
+            width: 225px;
+            padding: 20px 15px 26px 15px;
+            &__img {
+                height: 188px;
+            }
+            hr {
+                margin-top: 0px;
+            }
+            &__old-price {
+                font-size: 12px;
+            }
+            &__price {
+                font-size: 16px;
+            }
+        }
+
+    }
+}
+@media (max-width: 575px) {
+    .catalog {
+        padding-bottom: 40px;
+        &__tabs{
+            display: flex;
+            flex-direction: column;
+            margin-top: 40px;
+        }
+        li {
+            margin-bottom: 13px;
+        }
+        &__tab {
+            width: 180px;
+            height: 30px;
+            font-size: 13px;
+            line-height: 28px;
+        }
+        &__content {
+            margin-top: 37px;
         }
     }
 }

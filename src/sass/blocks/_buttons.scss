@@ -27,10 +27,16 @@
 }
 
 @media (max-width: 1200px){
-    .button_submit {
+    .button{
+        &_submit {
         width: 270px;
         height: 50px;
         font-size: 15px
+        }
+        &_mini {
+            width: 126px;
+            height: 38px;
+        }
     }
 }
 
@@ -49,6 +55,10 @@
             width: 252px;
             height: 48px;
             font-size: 14px;
+        }
+        &_mini {
+            width: 126px;
+            height: 38px;
         }
     }
 }
@@ -69,6 +79,10 @@
             height: 40px;
             font-size: 13px;
         }
+        &_mini {
+            width: 102px;
+            height: 34px;
+        }
     }
 }
 
@@ -79,6 +93,9 @@
             width: 224px;
             height: 34px;
             font-size: 11px;
+        }
+        &_mini {
+            width: 100px;
         }
     }
 }

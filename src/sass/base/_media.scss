@@ -249,6 +249,12 @@
             height: 43px;
             font-size: 13px;
         }
+        .error{
+            font-size: 13px;
+        }
+        label.error {
+            font-size: 13px;
+        }
     }
     .carousel{
         width: 100%;
@@ -419,7 +425,7 @@
             font-size: 13px;
         }
         &_submit {
-            width: 190px;
+            width: 214px;
             height: 40px;
             font-size: 12px;
         }
@@ -465,9 +471,15 @@
     }
     .feed-form {
         input {
-            width: 190px;
+            width: 214px;
             height: 35px;
             font-size: 11px
+        }
+        .error{
+            font-size: 11px;
+        }
+        label.error {
+            font-size: 11px;
         }
     }
     .carousel{

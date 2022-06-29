@@ -30,14 +30,15 @@
         color: #0d0d0d;
         text-align: center;
     }
+    &_mini {
+        display: none;
+        min-height: 140px;
+    }
     &__descr {
         font-size: 14px;
         font-weight: 500;
         color: #0d0d0d;
         text-align: center;
-    }
-    &_mini {
-        min-height: 140px;
     }
     .error {
         border: 1px solid red;
@@ -49,6 +50,6 @@
     }
 }
 
-#consultation, #order, #thanks{
+#order, #thanks{
     display: none;
 }

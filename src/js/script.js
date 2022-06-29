@@ -1,109 +1,142 @@
-const slider = tns({
-    container: '.carousel__inner',
-    items: 1,
-    slideBy: 'page',
-    autoplay: false,
-    controls: false,
-});
-
-document.querySelector('.prev').addEventListener('click', function () {
-    slider.goTo('prev');
-});
-document.querySelector('.next').addEventListener('click', function () {
-    slider.goTo('next');
-});
-
-$(document).ready(function() {
-    $('ul.catalog__tabs').on('click', 'li:not(.catalog__tab_active)', function() {
-      $(this)
-        .addClass('catalog__tab_active').siblings().removeClass('catalog__tab_active')
-        .closest('div.container').find('div.catalog__content').removeClass('catalog__content_active')
-        .eq($(this).index()).addClass('catalog__content_active');
-    });
-    
-    function toggleSlide (item){
-        $(item).each(function(i) {
-            $(this).on('click',function(e){
-                e.preventDefault();
-                $('.catalog-item__content').eq(i).toggleClass('catalog-item__content_active');
-                $('.catalog-item__list').eq(i).toggleClass('catalog-item__list_active');
-            });
-        });
-    }
-
-    toggleSlide('.catalog-item__link');
-    toggleSlide('.catalog-item__back');
-
+window.addEventListener('DOMContentLoaded', () => {
     //Modal
 
-    $('[data-modal=consultation]').on('click', function() {
-        $('.overlay, #consultation').fadeIn('slow');
-    });
-    $('.modal__close').on('click', function(){
-        $('.overlay, #consultation, #thanks,#order').fadeOut('slow');
-    });
-    $('.button_mini').on('click', function(){
-        $('.overlay, #order').fadeIn('slow');
-    });
-    $('.button_mini').each(function(i){
-        $(this).on('click', function(){
-            $('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text());
-        });
-    });
+    const modalTrigger = document.querySelectorAll('[data-modal]'),
+          overlay =document.querySelector('.overlay'),
+          thanks = document.querySelector('#thanks'),
+          modal = document.querySelector('#order'),
+          closeModalBtn = document.querySelector('[data-close]'),
+          submit = document.querySelector('.button_submit'),
+          subtitle = document.querySelectorAll('.catalog-item__subtitle'),
+          chosenProduct = document.querySelector('[data-choice]');
 
-    function validateForms(form){
-        $(form).validate({
-            rules: {
-                name: "required",
-                phone: "required",
-                email: {
-                    required: true,
-                    email: true
-                }
-            },
-            messages: {
-                name: "Пожалуйста, введите свое имя",
-                phone: "Пожалуйста, введите свой телефон",
-                email: {
-                  required: "Пожалуйста, введите свою почту",
-                  email: "Неправильно введен адрес почты"
+    modalTrigger.forEach(btn => { 
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const productChosen = subtitle;
+            let name;
+
+            for(let i = 0; i < productChosen.length; i++){
+                if( i === modalTrigger[i]){
+                    name = productChosen[i].innerHTML;
+                    return name;
                 }
             }
+            
+            chosenProduct.value = name;
+            modal.style.display = 'block';
+            overlay.style.display = 'block';
+            document.body.style.overflow = 'hidden';
         });
-    }
-
-    validateForms('#consultation-form');
-    validateForms('#consultation form');
-    validateForms('#order form');
-    
-    $('input[name=phone]').mask("+7 (999) 999-99-99");
-
-    $('form').submit(function(e) {
-        e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: "mailer/smart.php",
-            data: $(this).serialize()
-        }).done(function(){
-            $(this).find("input").val("");
-            $('#consultation, #order').fadeOut();
-            $('.overlay, #thanks').fadeIn ();
-            $('form').trigger('reset');
-        });
-        return false;
     });
 
-    $(window).scroll(function(){
-        if($(this).scrollTop() > 1600) {
-            $('.pageup').fadeIn();
-        }else {
-            $('.pageup').fadeOut();
+
+
+
+    // function processEvent(event) {
+    //     var dataset = event.target.dataset;
+      
+    //     modal.style.display = 'block';
+    //     overlay.style.display = 'block';
+    //     document.body.style.overflow = 'hidden';
+
+    //     input.value = subtitle[dataset];
+      
+    //     event.preventDefault();
+    //     console.log(input.value);
+    //   }
+
+    // for (let i = 0; i < modalTrigger.length; i++) {
+    //     modalTrigger[i].addEventListener('click', processEvent);
+    //   }
+
+    function thank() {
+        thanks.style.display = 'block';
+        overlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        closeModalBtn.addEventListener('click', closeModal);
+        setTimeout(closeModal, 2000);
+    }
+
+    submit.addEventListener('click', () => {
+        validateForms('#modal form');
+        closeModal();
+        thank();
+
+    });
+
+    function closeModal() {
+        modal.style.display = 'none';
+        thanks.style.display = 'none';
+        overlay.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+    closeModalBtn.addEventListener('click', closeModal);
+
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            closeModal();
         }
     });
 
-    $("a[href^='#']").click(function(){
-        const _href = $(this).attr("href");
-        $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
-        return false;
+    document.addEventListener('keydown', (e) => {
+        if(e.code === "Escape") {
+            closeModal();
+        }
     });
+    
+        function validateForms(form){
+            $(form).validate({
+                rules: {
+                    name: "required",
+                    phone: "required",
+                    email: {
+                        required: true,
+                        email: true
+                    }
+                },
+                messages: {
+                    name: "Пожалуйста, введите свое имя",
+                    phone: "Пожалуйста, введите свой телефон",
+                    email: {
+                      required: "Пожалуйста, введите свою почту",
+                      email: "Неправильно введен адрес почты"
+                    }
+                }
+            });
+        }
+    
+        
+        
+        $('input[name=phone]').mask("+7 (999) 999-99-99");
+    
+        $('form').submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "mailer/smart.php",
+                data: $(this).serialize()
+            }).done(function(){
+                $(this).find("input").val("");
+                $('#modal').fadeOut();
+                $('.overlay, #thanks').fadeIn ();
+                $('form').trigger('reset');
+            });
+            return false;
+        });
+    
+        $(window).scroll(function(){
+            if($(this).scrollTop() > 1600) {
+                $('.pageup').fadeIn();
+            }else {
+                $('.pageup').fadeOut();
+            }
+        });
+    
+        $("a[href=#up]").click(function(){
+            const _href = $(this).attr("href");
+            $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
+            return false;
+        });
+    
 });
